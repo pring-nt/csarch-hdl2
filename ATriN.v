@@ -22,7 +22,7 @@ endmodule
 module FF_Circuit(A, B, C, D, Y, clk, rst);
     input Y, clk, rst;
     output A, B, C, D; // D doesn't change at all
-    assign D = 0;
+    assign D = 1'b0;
     wire JKA, JKB, JKC;
 
     assign JKA = ((~B)&(~C)&(~Y)) | (B&C&Y); // JA and KB are equal so I just combined them, same with JKB and JKC
