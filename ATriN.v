@@ -1,1 +1,34 @@
 // NAME: TRINIDAD, NATHAN P. SECTION: S04
+`timescale 1ns/1ps
+
+module FF_JK(Q, J, K, clk, rst);
+	output reg Q;
+	input J, K;
+	input clk, rst;
+
+  	always @(posedge clk, negedge rst)
+  	if(rst == 0 ) Q <= 0;
+  	else
+		begin
+			case ({J, K})
+				2'b00: Q <= Q;    // No change
+				2'b01: Q <= 1'b0; // Set 0
+				2'b10: Q <= 1'b1; // Set 1
+				2'b11: Q <= ~Q;   // Toggle
+			endcase	
+		end
+endmodule
+
+module FF_Circuit(Y, A, B, C, D, clk, rst);
+    input Y, clk, rst;
+    output A, B, C, D; // D doesn't change at all
+    wire JKA, JKB, JKC;
+
+    assign JKA = ((~B)&(~C)&(~Y)) | (B&C&Y); // JA and KB are equal so I just combined them, same with JKB and JKC
+    assign JKB = ((~C)&(~Y)) | (C&Y);
+    assign JKC = 1;
+
+    FF_JK JK1(A, JKA, JKA, clk, rst);
+    FF_JK JK1(B, JKB, JKB, clk, rst);
+    FF_JK JK1(C, JKC, JKC, clk, rst);
+endmodule
