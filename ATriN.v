@@ -19,7 +19,7 @@ module FF_JK(Q, J, K, clk, rst);
 		end
 endmodule
 
-module FF_Circuit(Y, A, B, C, D, clk, rst);
+module FF_Circuit(A, B, C, D, Y, clk, rst);
     input Y, clk, rst;
     output A, B, C, D; // D doesn't change at all
     wire JKA, JKB, JKC;
