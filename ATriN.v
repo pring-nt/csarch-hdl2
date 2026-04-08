@@ -22,6 +22,7 @@ endmodule
 module FF_Circuit(A, B, C, D, Y, clk, rst);
     input Y, clk, rst;
     output A, B, C, D; // D doesn't change at all
+    assign D = 0;
     wire JKA, JKB, JKC;
 
     assign JKA = ((~B)&(~C)&(~Y)) | (B&C&Y); // JA and KB are equal so I just combined them, same with JKB and JKC
@@ -29,6 +30,6 @@ module FF_Circuit(A, B, C, D, Y, clk, rst);
     assign JKC = 1;
 
     FF_JK JK1(A, JKA, JKA, clk, rst);
-    FF_JK JK1(B, JKB, JKB, clk, rst);
-    FF_JK JK1(C, JKC, JKC, clk, rst);
+    FF_JK JK2(B, JKB, JKB, clk, rst);
+    FF_JK JK3(C, JKC, JKC, clk, rst);
 endmodule
