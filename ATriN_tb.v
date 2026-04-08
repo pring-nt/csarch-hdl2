@@ -33,6 +33,7 @@ module FF_Circuit_tb();
 	//initialize print statements
 	initial
 		begin
+			$display("Trinidad, Nathan P.	Structural even up-down Binary counter");
 			$monitor("time = %d | clk = %b | rst = %b | Y = %b | A = %b | B = %b | C = %b | D = %b",
 			 $time, t_clk, t_rst, t_Y, t_A, t_B, t_C, t_D);
 		end
