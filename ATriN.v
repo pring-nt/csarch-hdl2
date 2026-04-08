@@ -27,7 +27,7 @@ module FF_Circuit(A, B, C, D, Y, clk, rst);
 
     assign JKA = ((~B)&(~C)&(~Y)) | (B&C&Y); // JA and KB are equal so I just combined them, same with JKB and JKC
     assign JKB = ((~C)&(~Y)) | (C&Y);
-    assign JKC = 1;
+    assign JKC = 1'b1;
 
     FF_JK JK1(A, JKA, JKA, clk, rst);
     FF_JK JK2(B, JKB, JKB, clk, rst);
