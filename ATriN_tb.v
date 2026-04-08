@@ -12,14 +12,14 @@ module FF_Circuit_tb();
 	initial
 		begin
 			t_clk = 1'b0;
-			forever #5 t_clk = ~ t_clk;
+			forever #5 t_clk = ~t_clk;
 		end
 
 	//initialize reset
 	initial
 		begin
-			t_rst = 1b'0;
-			#10 t_rst = 1b'1;
+			t_rst = 1'b0;
+			#10 t_rst = 1'b1;
 		end
 
 	//initialize Y
@@ -27,7 +27,7 @@ module FF_Circuit_tb();
 		begin
 			t_Y = 1'b0;
 			#100
-			t_X = 1'b1;
+			t_Y = 1'b1;
 		end
 
 	//initialize print statements
